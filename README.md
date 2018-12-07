@@ -36,4 +36,5 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
 
-[https://robjlf.github.io/html/snake.html](贪吃蛇)
+[贪吃蛇](https://robjlf.github.io/html/snake.html)
+
