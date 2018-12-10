@@ -6,27 +6,72 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    body {
+    @media screen and (max-width: 400px) {
+      canvas {
+        width: 100%;
+      }
+      body {
+        width: 100%;
+      }
+    }
+    .flexBox {
       display: flex;
-      height: 100vh;
-      margin: 0;
-      padding: 0;
+      flex-direction: row;
+      flex-wrap: nowrap;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start ; 
+    }
+    body {
+      width: 400px;
+      height: 100vh;
+      margin: 0 auto;
+      padding: 5px;
     }
     canvas {
       background-color: black;
     }
+    #buttons button {
+      width: 30%;
+      height: 100%;
+    }
+    #buttons {
+      height: 30%;
+    }
+    #buttons>div {
+      height: 50%;
+    }
   </style>
 </head>
 <body>
-  <canvas id="can" width="400" height="400"></canvas>
+  <div class="flexBox">
+    <canvas id="can" width="400" height="400"></canvas>
+  </div>
+  <div id="buttons">
+    <div class="flexBox">
+      <button>&#8593;</button>
+    </div>
+    <div class="flexBox">
+      <button>&#8592;</button>
+      <button>&#8595;</button>
+      <button>&#8594;</button>
+    </div>
+  </div>
   <script>
     var direction = -1,
     snake = [18, 19],
     food = 40,
     n,
     box = document.getElementById('can').getContext('2d');
+    var oBut = document.getElementsByTagName('button');
+    for(let i=0;i<oBut.length;i++) {
+      oBut[i].index = [1, 0, 3, 2][i];
+      oBut[i].onclick = function (e) {
+        n = [-1, -20, 1, 20][this.index] || direction;//n为当前按键指定的方向
+        direction = snake[1] - snake[0] == n ? direction : n;//不允许指定的新directtion与蛇的当前移动方向相反
+        return false;
+      }
+    }
+
 
     function draw(seat, color) {
       box.fillStyle = color;
@@ -43,17 +88,20 @@
       if(snake.indexOf(n ,1) > 0 || n < 0 || n> 399 || direction == 1 && n%20==0 || direction == -1 && n%20 == 19) {
         alert('GAME OVER');//判断新产生的头部是否撞墙或者吃到自己
         location.reload();
+        return false;//因为location.reload会花费时间，这里先退出循环
       }
       draw(n, 'lime');
       if(n == food) { //如果吃到了食物
         while(snake.indexOf(food = ~~(Math.random() * 400)) != -1);
-        draw(food, 'yellow')
+        draw(food, 'yellow');
       } else {
         draw(snake.pop(), 'black');
       }
 
       setTimeout(arguments.callee, 150);
     }()
+
+
   </script>
 </body>
 </html>
