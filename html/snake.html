@@ -10,7 +10,7 @@
       canvas {
         width: 100%;
       }
-      body {
+      body.phone {
         width: 100%;
       }
     }
@@ -25,24 +25,17 @@
       width: 400px;
       height: 100vh;
       margin: 0 auto;
-      padding: 5px;
+      padding: 0;
     }
     canvas {
       background-color: black;
     }
     #buttons button {
       width: 30%;
-      height: 100%;
-    }
-    #buttons {
-      height: 30%;
-    }
-    #buttons>div {
-      height: 50%;
     }
   </style>
 </head>
-<body>
+<body class="phone">
   <div class="flexBox">
     <canvas id="can" width="400" height="400"></canvas>
   </div>
@@ -64,6 +57,9 @@
     box = document.getElementById('can').getContext('2d');
     var oBut = document.getElementsByTagName('button');
     for(let i=0;i<oBut.length;i++) {
+      let w = parseFloat(getComputedStyle(oBut[i]).width);
+      oBut[i].style.height = w/2+'px';
+      
       oBut[i].index = [1, 0, 3, 2][i];
       oBut[i].ontouchstart = function (e) {
         n = [-1, -20, 1, 20][this.index] || direction;//n为当前按键指定的方向
@@ -86,8 +82,8 @@
     !function () {
       snake.unshift(n=snake[0]+direction);//添加新方向上的新头 n保存心头的位置
       if(snake.indexOf(n ,1) > 0 || n < 0 || n> 399 || direction == 1 && n%20==0 || direction == -1 && n%20 == 19) {
-        alert('GAME OVER');//判断新产生的头部是否撞墙或者吃到自己
-        location.reload();
+        // alert('GAME OVER');//判断新产生的头部是否撞墙或者吃到自己
+        // location.reload();
         return false;//因为location.reload会花费时间，这里先退出循环
       }
       draw(n, 'lime');
