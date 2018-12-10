@@ -82,8 +82,8 @@
     !function () {
       snake.unshift(n=snake[0]+direction);//添加新方向上的新头 n保存心头的位置
       if(snake.indexOf(n ,1) > 0 || n < 0 || n> 399 || direction == 1 && n%20==0 || direction == -1 && n%20 == 19) {
-        // alert('GAME OVER');//判断新产生的头部是否撞墙或者吃到自己
-        // location.reload();
+        alert('GAME OVER');//判断新产生的头部是否撞墙或者吃到自己
+        location.reload();
         return false;//因为location.reload会花费时间，这里先退出循环
       }
       draw(n, 'lime');
