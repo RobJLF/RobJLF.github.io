@@ -65,7 +65,7 @@
     var oBut = document.getElementsByTagName('button');
     for(let i=0;i<oBut.length;i++) {
       oBut[i].index = [1, 0, 3, 2][i];
-      oBut[i].onclick = function (e) {
+      oBut[i].onfocus = function (e) {
         n = [-1, -20, 1, 20][this.index] || direction;//n为当前按键指定的方向
         direction = snake[1] - snake[0] == n ? direction : n;//不允许指定的新directtion与蛇的当前移动方向相反
         return false;
