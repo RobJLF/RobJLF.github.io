@@ -10,6 +10,7 @@ function Local() {
   // 定时器
   var timer;
   // 计时
+  var timeStamp = 30;
   var timeStart;
   // 绑定键盘事件
   var bindKeyEvent = function (gameOverArea) {
@@ -54,7 +55,7 @@ function Local() {
     var interval = Date.now() - timeStart;
     interval = ~~(interval/1000);
     game.setTime(interval);
-    interval = ~~(interval / 5);
+    interval = ~~(interval / timeStamp);
     return interval;
   }
   var checkLevel = function (_level) {

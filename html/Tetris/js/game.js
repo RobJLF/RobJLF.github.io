@@ -37,7 +37,7 @@ function Game() {
   var nextDivs = [];
   
   var score;
-
+  var getScoreRule = [10, 30, 60, 100];
   var gameArea;
   var nextArea;
   var timeArea;
@@ -235,7 +235,7 @@ function Game() {
   }
   var addScore = function (line) {
     if(0<line && line <= 4) {
-      score += [10, 30, 60, 100][line - 1];
+      score += getScoreRule[line - 1];
       scoreArea.textContent = score; 
     }
   }
