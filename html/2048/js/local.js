@@ -27,7 +27,7 @@ function Local() {
       var deltax = endx - startx;
       var deltay = endy - starty;
 
-      if (deltax * deltax + deltay * deltay < 50) {
+      if (deltax * deltax + deltay * deltay < 25) {
         return;
       }
       // x

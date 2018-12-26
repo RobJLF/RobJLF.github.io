@@ -157,14 +157,28 @@ header button:active {
   }
   header h1 {
     font-size: 27px;
-    margin: 0 13px;
+    margin: 0;
+    margin-top: 20px;
   }
   header div.scoreDiv {
     margin-top: 0px;
   }
-  header button {
+  header div.scoreDiv div {
+    margin: 0;
+    margin-right: 3px;
+    padding: 6px;
+  }
+  header div.tip-but p {
     float: left;
-    margin-top: -22px;
+    margin-top: 10px;
+    width: 60%;
+    font-weight: normal;
+    text-align: left;
+    color: #776e65;
+  }
+  header div.tip-but button {
+    margin-bottom: 0;
+    float: right;
   }
   #game-container {
     position: relative;
