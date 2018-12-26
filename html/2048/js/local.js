@@ -17,6 +17,9 @@ function Local() {
       startx = event.touches[0].pageX;
       starty = event.touches[0].pageY;
     });
+    document.addEventListener("touchmove", function (event) {
+      event.preventDefault();
+    });
     document.addEventListener("touchend", function (event) {
       endx = event.changedTouches[0].pageX;
       endy = event.changedTouches[0].pageY;
@@ -24,7 +27,7 @@ function Local() {
       var deltax = endx - startx;
       var deltay = endy - starty;
 
-      if (deltax * deltax + deltay * deltay < 0.09 * game.windowWith() * game.windowWith()) {
+      if (deltax * deltax + deltay * deltay < 0.04 * game.windowWidth() * game.windowWidth()) {
         return;
       }
       // x
