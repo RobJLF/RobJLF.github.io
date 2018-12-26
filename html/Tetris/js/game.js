@@ -94,7 +94,7 @@ function Game() {
     return true;
   }
 
-
+  // 判断某点的位置是否在整个gameArea内
   var isHereInner = function (aX, aY) {
     if (aX < 0 || aY < 0 || aX >= gameData.length || aY >= gameData[0].length) {
       return false;
@@ -102,7 +102,7 @@ function Game() {
       return true;
     }
   }
-  // 检测curBlock中某个点的位置在gamedata中否出界或者此位置已经存在了不为0的点
+  // 使用curData渲染gameData是调用， 判断gameData中那些位置需要渲染
   var canCoverHere = function (pos, x, y) {
     var aX = pos.x + x;
     var aY = pos.y + y;
@@ -113,10 +113,11 @@ function Game() {
     }
 
   }
+  // 在curData移动时调用， 清除gameData中上一次curData渲染残留的数据
   var shouldEliminateHere = function(pos, x, y) {
     var aX = pos.x + x;
     var aY = pos.y + y;
-    if (isHereInner(aX, aY) && curBlock.data[x][y] != 0 ) {
+    if (isHereInner(aX, aY) && gameData[aX][aY] == 1 ) {
       return true;
     } else {
       return false;
@@ -239,6 +240,11 @@ function Game() {
       scoreArea.textContent = score; 
     }
   }
+
+  var getScore = function () {
+    return score;
+  }
+
   var setLevel = function (level) {
     levelArea.textContent = level;
   }
@@ -278,5 +284,6 @@ function Game() {
   this.addScore = addScore;
   this.setLevel = setLevel;
   this.gameOver = gameOver;
+  this.getScore = getScore;
   this.fall = function () {while(down());};
 }

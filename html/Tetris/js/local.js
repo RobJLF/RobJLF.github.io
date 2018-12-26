@@ -9,8 +9,13 @@ function Local() {
   var levelToInterval = [200, 170, 140, 110, 80];
   // 定时器
   var timer;
-  // 计时
+  // 难度增加时间间隙
   var timeStamp = 30;
+  // 难度增加分数间隙
+  var scoreStamp = 100;
+  // 难度增加方式 true表示score false表示time
+  var levelUpWay = true;
+  // 游戏开始时刻
   var timeStart;
   // 绑定键盘事件
   var bindKeyEvent = function (gameOverArea) {
@@ -51,14 +56,26 @@ function Local() {
     clearInterval(timer);
     document.onkeydown = null;
   }
-  var timeFun = function () {
+  var setTimeFun = function () {
     var interval = Date.now() - timeStart;
     interval = ~~(interval/1000);
     game.setTime(interval);
-    interval = ~~(interval / timeStamp);
-    return interval;
   }
-  var checkLevel = function (_level) {
+
+  var getLevelByTime = function () {
+    var interval = Date.now() - timeStart;
+    interval = ~~(interval / 1000);
+    interval = ~~(interval / timeStamp);
+    return interval + 1;
+  }
+
+  var getLevelByScore = function () {
+    var score = game.getScore();
+    score = ~~(score / scoreStamp);
+    return score + 1;
+  }
+
+  var checkAndSetLevel = function (_level) {
     if (_level <= 5 && _level >= 1 && level < _level) {
       level = _level;
       INTERVER = levelToInterval[level - 1];
@@ -67,8 +84,17 @@ function Local() {
       game.setLevel(level);
     }
   }
+  var refreshLevel = function () {
+    var _level;
+    if (levelUpWay) {
+      _level = getLevelByScore();
+    } else {
+      _level = getLevelByTime();
+    }
+    checkAndSetLevel(_level);
+  }
   var move = function () {
-    var _level = timeFun() + 1;
+    setTimeFun();
     if (!game.down()) {
       game.fixed();
       var line = game.checkClear();
@@ -80,7 +106,7 @@ function Local() {
         game.genarateNext();
       }
     }
-    checkLevel(_level);
+    refreshLevel();
   }
   this.start = start;
 }

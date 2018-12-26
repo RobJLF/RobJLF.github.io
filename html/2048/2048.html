@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="2048.css">
+
+  <title>2048-GAME</title>
+</head>
+
+<body>
+  <header class="clearfix">
+    <div class="wrap clearfix">
+      <h1>2048</h1>
+      <div class="scoreDiv clearfix fr">
+        <div>
+          <p>score</p>
+          <span id="score">0</span>
+          <span id="increaseScore"></span>
+        </div>
+        <div>
+          <p>best</p>
+          <span id="bestscore">0</span></span>
+        </div>
+      </div>
+    </div>
+    <button id="button-newGame">New Game</button>
+  </header>
+
+  <div id="game-container">
+    <div class="grid-container">
+      <div class="grid-row">
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+      </div>
+      <div class="grid-row">
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+      </div>
+      <div class="grid-row">
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+      </div>
+      <div class="grid-row">
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+        <div class="grid-cell"></div>
+      </div>
+    </div>
+    <div class="tile-container"></div>
+    <div class="game-over" id="gameoverdiv">
+      <p>GAME OVER!</p>
+    </div>
+  </div>
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/animation.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/local.js"></script>
+</body>
+
+</html>

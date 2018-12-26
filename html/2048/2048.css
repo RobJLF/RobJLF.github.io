@@ -1,0 +1,207 @@
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.fr {
+  float: right;
+}
+body,
+p {
+  margin: 0;
+}
+body {
+  background-color: #faf8ef;
+}
+header {
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 500px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+header h1 {
+  float: left;
+  margin: 10px auto;
+  font: 900 70px Arial;
+  line-height: 1;
+  color: #776e65;
+}
+header div.scoreDiv {
+  margin-top: 12px;
+}
+@keyframes moveUp {
+  from {
+    top: 0px;
+    opacity: 1;
+  }
+  to {
+    top: -50px;
+    opacity: 0;
+  }
+}
+header div.scoreDiv div {
+  float: left;
+  position: relative;
+  margin: 5px 5px;
+  padding: 7px 15px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 4px;
+  text-align: center;
+  background-color: #bbada0;
+}
+header div.scoreDiv div p {
+  color: #eee4da;
+}
+header div.scoreDiv div span {
+  font-size: 25px;
+  color: white;
+}
+header div.scoreDiv div .moveUp {
+  -webkit-animation: moveUp 0.4s ease-in;
+  -moz-animation: moveUp 0.4s ease-in;
+  animation: moveUp 0.4s ease-in;
+}
+header div.scoreDiv div #increaseScore {
+  color: rgba(119, 110, 101, 0.9);
+  position: absolute;
+  opacity: 0;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+header button {
+  display: block;
+  margin: 10px auto;
+  width: 100px;
+  padding: 10px;
+  background-color: #8fa668;
+  color: white;
+  border-style: solid;
+  border-radius: 10px;
+  outline: none;
+}
+header button:hover {
+  background-color: #9f8b77;
+}
+header button:active {
+  border-color: #bbb;
+}
+#game-container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  margin: 30px auto;
+  background-color: #bbada0;
+  border-radius: 10px;
+}
+#game-container .grid-container {
+  padding: 20px;
+}
+#game-container .grid-container .grid-row {
+  margin-bottom: 20px;
+  height: 100px;
+}
+#game-container .grid-container .grid-row:last-child {
+  margin-bottom: 0px;
+}
+#game-container .grid-container .grid-row .grid-cell {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  margin-right: 20px;
+  float: left;
+  background-color: #ccc0b3;
+}
+#game-container .grid-container .grid-row .grid-cell:last-child {
+  margin-right: 0px;
+}
+#game-container .tile-container .tile-cell {
+  width: 100px;
+  height: 100px;
+  border-radius: 6px;
+  position: absolute;
+  font: bold 60px Arial;
+  line-height: 100px;
+  text-align: center;
+}
+@keyframes bgColorChange {
+  to {
+    background-color: rgba(238, 228, 218, 0.73);
+    opacity: 1;
+  }
+}
+#game-container .game-over {
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: bgColorChange 0.8s cubic-bezier(0, 0, 0.14, 1.13) 0.8s forwards;
+}
+#game-container .game-over p {
+  margin-top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  font: 900 60px Arial;
+  color: #776e65;
+}
+@media screen and (max-width: 520px) {
+  header {
+    margin-top: 50px;
+    width: 280px;
+  }
+  header h1 {
+    font-size: 27px;
+    margin: 0 13px;
+  }
+  header div.scoreDiv {
+    margin-top: 0px;
+  }
+  header button {
+    float: left;
+    margin-top: -22px;
+  }
+  #game-container {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    margin: 18px auto;
+    border-radius: 6px;
+  }
+  #game-container .grid-container {
+    padding: 10px;
+  }
+  #game-container .grid-container .grid-row {
+    margin-bottom: 10px;
+    height: 57.5px;
+  }
+  #game-container .grid-container .grid-row:last-child {
+    margin-bottom: 0px;
+  }
+  #game-container .grid-container .grid-row .grid-cell {
+    width: 57.5px;
+    height: 57.5px;
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+  #game-container .grid-container .grid-row .grid-cell:last-child {
+    margin-right: 0px;
+  }
+  #game-container .tile-container .tile-cell {
+    width: 57.5px;
+    height: 57.5px;
+    border-radius: 3px;
+    position: absolute;
+    font-size: 34.2px;
+    line-height: 57.5px;
+    text-align: center;
+  }
+  #game-container .game-over p {
+    font-size: 57px;
+  }
+}
