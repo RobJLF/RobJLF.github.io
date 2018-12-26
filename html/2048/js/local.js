@@ -27,7 +27,7 @@ function Local() {
       var deltax = endx - startx;
       var deltay = endy - starty;
 
-      if (deltax * deltax + deltay * deltay < 0.04 * game.windowWidth() * game.windowWidth()) {
+      if (deltax * deltax + deltay * deltay < 0.01 * game.windowWidth() * game.windowWidth()) {
         return;
       }
       // x
