@@ -178,7 +178,7 @@ header button:active {
   }
   header div.tip-but button {
     margin-bottom: 0;
-    float: right;
+    float: right; 
   }
   #game-container {
     position: relative;
